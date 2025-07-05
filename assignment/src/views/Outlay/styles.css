@@ -12,14 +12,14 @@
   left: 0;
   width: 230px;
   height: 100vh;
-  background-color: #00212C; /* optional: sidebar background */
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* optional: add a shadow */
+  background-color: #00212C; 
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1); 
   z-index: 1000;
 }
 
 .outlay-right {
-  margin-left: 100px; /* offset the content by sidebar width */
+  margin-left: 260px;
   width: calc(100% - 240px);
   height: 100vh;
-  overflow-y: auto; /* enable scrolling inside the right pane if needed */
+  overflow-y: auto;
 }
