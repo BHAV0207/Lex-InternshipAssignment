@@ -1,0 +1,49 @@
+.card-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+
+.card-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333333;
+}
+
+.card-icon {
+  width: 28px;
+  height: 28px;
+  color: #4f46e5; /* Indigo-600 */
+}
+
+.card-text-green {
+  color: #16a34a; /* Green-600 */
+  font-weight: 500;
+}
+
+.card-text-red {
+  color: #dc2626; /* Red-600 */
+  font-weight: 500;
+}
+
+.card-container > div:last-child {
+  font-size: 14px;
+}

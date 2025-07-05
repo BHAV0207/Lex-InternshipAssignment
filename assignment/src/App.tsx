@@ -9,7 +9,10 @@ function App() {
     <SnackbarProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={E_Routes.home} element={<Outlay children={<Dashboard></Dashboard>}/>} />
+          <Route
+            path={E_Routes.home}
+            element={<Outlay children={<Dashboard></Dashboard>} />}
+          />
         </Routes>
       </BrowserRouter>
     </SnackbarProvider>
