@@ -1,0 +1,117 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  /* box-sizing: border-box; */
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'poppins', sans-serif;
+}
+
+.modal-top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-family: 'poppins', sans-serif;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #111827;
+  text-align: center;
+  border-bottom: #111827 1px solid;
+  padding: 5px 20px;
+}
+
+.close-btn{
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 5px 20px;
+  gap: 8px;
+  max-width: 550px;
+}
+
+/* Input + Select Styling */
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s border ease;
+  background-color: #f9fafb;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+  border-color: #00212C;
+  background-color: #fff;
+}
+
+/* Button Container */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Primary Button */
+.modal-actions {
+  padding: 20px 30px;
+  border-top: 1px solid black;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-actions button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Cancel (secondary) */
+.modal-actions .cancel-btn {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.modal-actions .cancel-btn:hover {
+  background-color: #e5e7eb;
+}
+
+/* Create (primary) */
+.modal-actions button:first-child {
+  background-color: #00212C;
+  color: #ffffff;
+}

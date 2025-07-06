@@ -112,12 +112,15 @@
 
 .create-btn {
   padding: 8px 16px;
-  background-color: #b1b1b1;
-  color: white;
+  background-color: white;
+  color: black;
   border: none;
   border-radius: 6px;
   font-weight: 500;
   cursor: pointer;
+}
+.create-btn:hover {
+  background-color: #f0f0f0;
 }
 
 .workspace-table {
@@ -206,7 +209,7 @@
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
   max-width: 350px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'poppins', sans-serif;
 }
 
 

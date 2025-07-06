@@ -15,6 +15,7 @@ import Card from "../../components/Card/Card";
 import "./styles.css";
 import { defaultWorkspace, Workspace } from "../../types/workspace";
 import WorkspaceCard from "../../components/WorkspaceCard/WorkspaceCard";
+import WorkspaceModal from "../../components/WorkspaceModal/WorkspaceModal";
 
 function Dashboard() {
   const cardData = [
@@ -55,11 +56,30 @@ function Dashboard() {
     },
   ];
 
-  const [isLayoutGrid, setIsLayoutGrid] = useState(false);
+  const [serchTerm, setSearchTerm] = useState<string>("");
+  const [isLayoutGrid, setIsLayoutGrid] = useState<boolean>(false);
+  const [workspaceModal, setWorkspaceModal] = useState<boolean>(false);
 
+  const [allWorkspaces, setAllWorkspaces] = useState<Workspace[]>([
+    defaultWorkspace,
+  ]);
   const [workspaceData, setWorkspaceData] = useState<Workspace[]>([
     defaultWorkspace,
   ]);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+  
+    const filtered = allWorkspaces.filter(
+      (ws) =>
+        ws.name.toLowerCase().includes(value.toLowerCase()) ||
+        ws.clientName.toLowerCase().includes(value.toLowerCase())
+    );
+  
+    setWorkspaceData(filtered);
+  };
+  
 
   return (
     <div className="dashboard-container">
@@ -116,6 +136,8 @@ function Dashboard() {
               type="text"
               placeholder="Search by Workspace Name / Client Name"
               className="search-input"
+              onChange={handleSearch}
+              value={serchTerm}
             />
             <select className="select-filter">
               <option>All Types</option>
@@ -123,7 +145,12 @@ function Dashboard() {
             <select className="select-filter">
               <option>All Status</option>
             </select>
-            <button className="create-btn">+ Create New Workspace</button>
+            <button
+              className="create-btn"
+              onClick={() => setWorkspaceModal(true)}
+            >
+              + Create New Workspace
+            </button>
           </div>
 
           {isLayoutGrid ? (
@@ -183,6 +210,14 @@ function Dashboard() {
           )}
         </div>
       </div>
+
+      {workspaceModal && (
+        <WorkspaceModal
+          setModal={setWorkspaceModal}
+          data={setWorkspaceData}
+          dataAll={setAllWorkspaces}
+        ></WorkspaceModal>
+      )}
     </div>
   );
 }
