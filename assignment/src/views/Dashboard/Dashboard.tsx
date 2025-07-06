@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../../components/Nav/Nav";
 import {
   Users,
@@ -60,26 +60,33 @@ function Dashboard() {
   const [isLayoutGrid, setIsLayoutGrid] = useState<boolean>(false);
   const [workspaceModal, setWorkspaceModal] = useState<boolean>(false);
 
-  const [allWorkspaces, setAllWorkspaces] = useState<Workspace[]>([
-    defaultWorkspace,
-  ]);
-  const [workspaceData, setWorkspaceData] = useState<Workspace[]>([
-    defaultWorkspace,
-  ]);
+  const getInitialData = (): Workspace[] => {
+    const stored = localStorage.getItem("workspaces");
+    return stored ? JSON.parse(stored) : [defaultWorkspace];
+  };
+  const [allWorkspaces, setAllWorkspaces] = useState<Workspace[]>(
+    getInitialData()
+  );
+  const [workspaceData, setWorkspaceData] = useState<Workspace[]>(
+    getInitialData()
+  );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-  
+
     const filtered = allWorkspaces.filter(
       (ws) =>
         ws.name.toLowerCase().includes(value.toLowerCase()) ||
         ws.clientName.toLowerCase().includes(value.toLowerCase())
     );
-  
+
     setWorkspaceData(filtered);
   };
-  
+
+  useEffect(() => {
+    localStorage.setItem("workspaces", JSON.stringify(allWorkspaces));
+  }, [allWorkspaces]);
 
   return (
     <div className="dashboard-container">

@@ -5,12 +5,12 @@ import "./styles.css";
 interface Props {
   setModal: (val: boolean) => void;
   data: React.Dispatch<React.SetStateAction<Workspace[]>>;
-  dataAll : React.Dispatch<React.SetStateAction<Workspace[]>>;
+  dataAll: React.Dispatch<React.SetStateAction<Workspace[]>>;
 }
 
 import { useSnackbar } from "notistack";
 
-const WorkspaceModal: React.FC<Props> = ({ setModal, data , dataAll }) => {
+const WorkspaceModal: React.FC<Props> = ({ setModal, data, dataAll }) => {
   const { enqueueSnackbar } = useSnackbar(); // ✅
 
   const [form, setForm] = useState<Omit<Workspace, "id">>({
@@ -35,18 +35,17 @@ const WorkspaceModal: React.FC<Props> = ({ setModal, data , dataAll }) => {
       id: Date.now().toString(),
       ...form,
     };
-    data((prev) => {
+    dataAll((prev) => {
       const updated = [...prev, newWorkspace];
-      dataAll(updated);      // update master copy too
+      localStorage.setItem("workspaces", JSON.stringify(updated)); // Optional: immediate write
       return updated;
     });
-    
+    data((prev) => [...prev, newWorkspace]);
 
     enqueueSnackbar("✅ Workspace created successfully!", {
       variant: "success",
       autoHideDuration: 3000,
     });
-
     setModal(false);
   };
 

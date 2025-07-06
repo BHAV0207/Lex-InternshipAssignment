@@ -18,7 +18,7 @@ const Sidebar = () => {
     { name: "Team Management", icon: <Users />, path: "/team" },
     { name: "Billings & Plans", icon: <CreditCard />, path: "/billing" },
     { name: "Settings", icon: <Settings />, path: "/settings" },
-    { name: "Contact Admin", icon: <MessageCircle />, path: "/contact-admin" },
+    { name: "Contact Admin", icon: <MessageCircle />, path: "/contact" },
   ];
 
   return (

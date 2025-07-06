@@ -1,55 +1,67 @@
-.dashboard-overview-content{
+/* ---------- OVERVIEW SECTION ---------- */
+.dashboard-overview-content {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 20px;
   gap: 20px;
+  padding: 20px;
 }
 
-.dashboard-overview-header{
+.dashboard-overview-header {
   margin-left: 20px;
   font-weight: 600;
-  font-family: 'poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-.dashboard-overview{
+.dashboard-overview {
   background-color: white;
-  width : 95%;
-  padding : 20px;
-  height: 250px;
+  width: 100%;
+  padding: 20px;
+  height: auto;
+  border-radius: 12px;
 }
 
-.dashboard-body{
+/* ---------- BODY CONTAINER ---------- */
+.dashboard-body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
 }
 
-
+/* ---------- WORKSPACE SECTION ---------- */
 .dashboard-workspaces {
   margin-top: 40px;
   padding: 20px;
-  background-color: none;
-  border-radius: 12px;
   width: 95%;
 }
 
 .workspace-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .workspace-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .workspace-header h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
-  font-family: 'poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
 }
 
+/* ---------- VIEW TOGGLE ---------- */
 .workspace-view-toggle {
   display: flex;
-  background-color: white;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .view-btn {
@@ -59,24 +71,25 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   background: #00212C;
-  cursor: pointer;
   color: white;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .view-btn.active {
-  display: flex;
-  align-items: center;
   background-color: #f5f5f5;
-  font-weight: 500;
   color: #00212C;
+  font-weight: 500;
 }
 
+/* ---------- TABS ---------- */
 .workspace-tabs {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   margin-top: 20px;
   border-bottom: 2px solid #eee;
   padding-bottom: 4px;
+  overflow-x: auto;
 }
 
 .tab {
@@ -84,6 +97,7 @@
   font-weight: 500;
   cursor: pointer;
   color: #666;
+  white-space: nowrap;
 }
 
 .tab.active {
@@ -91,17 +105,21 @@
   color: #111;
 }
 
+/* ---------- CONTROLS ---------- */
 .workspace-controls {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .search-input {
-  width: 30%;
+  flex: 1 1 250px;
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  min-width: 200px;
 }
 
 .select-filter {
@@ -118,24 +136,28 @@
   border-radius: 6px;
   font-weight: 500;
   cursor: pointer;
+  white-space: nowrap;
 }
+
 .create-btn:hover {
   background-color: #f0f0f0;
 }
 
+/* ---------- TABLE VIEW ---------- */
 .workspace-table {
   margin-top: 20px;
-  overflow-x: auto;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 12px;
-  justify-content: center;
+  overflow-x: auto;
+  padding: 10px;
 }
 
 .workspace-table table {
   width: 100%;
+  min-width: 700px;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -147,72 +169,42 @@
   border-bottom: 1px solid #eee;
 }
 
-.badge-blue {
-  background-color: #e0f2ff;
-  color: #007bff;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-.badge-grey {
-  background-color: #f3f4f6;
-  color: #4b5563;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-.dots {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.upgrade-banner {
-  margin-top: 10px;
-  margin-bottom: 15px;
-  background-color: #00212c;
-  color: white;
-  padding: 16px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  height: 10px;
-  width: 80%;
-}
+/* ---------- GRID VIEW ---------- */
 .workspace-cards-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* 1 column by default */
-  gap: 1rem; /* Optional: space between cards */
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
   margin-top: 1.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .workspace-cards-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
   .workspace-cards-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-
+/* ---------- CARD ---------- */
 .workspace-card {
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 1.5rem;
+  font-family: 'Poppins', sans-serif;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  max-width: 350px;
-  font-family: 'poppins', sans-serif;
+  transition: transform 0.2s ease;
 }
 
+.workspace-card:hover {
+  transform: translateY(-2px);
+}
 
+/* ---------- UPGRADE CARD ---------- */
 .workspace-card.upgrade-card {
   display: flex;
   align-items: center;
@@ -224,18 +216,57 @@
   border-radius: 12px;
   gap: 0.75rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.2s ease;
 }
 
 .workspace-card.upgrade-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-
 .upgrade-text {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  font-family: 'poppins', sans-serif;
   color: #333;
-  line-height: 1.5;
+  text-align: center;
+}
+
+/* ---------- BADGES & DOTS ---------- */
+.badge-blue {
+  background-color: #e0f2ff;
+  color: #007bff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.badge-grey {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.dots {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ---------- UPGRADE BANNER ---------- */
+.upgrade-banner {
+  margin: 10px 0 15px;
+  background-color: #00212c;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  flex-wrap: wrap;
 }
