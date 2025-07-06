@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../../components/Nav/Nav";
-import { Users, CreditCard, FileText, Settings, BarChart3 } from "lucide-react";
+import {
+  Users,
+  CreditCard,
+  FileText,
+  Settings,
+  BarChart3,
+  Grid,
+  LayoutGrid,
+  List,
+} from "lucide-react";
 import Card from "../../components/Card/Card";
 import "./styles.css";
+import { defaultWorkspace, Workspace } from "../../types/workspace";
+import WorkspaceCard from "../../components/WorkspaceCard/WorkspaceCard";
 
 function Dashboard() {
   const cardData = [
@@ -43,6 +54,10 @@ function Dashboard() {
     },
   ];
 
+  const [workspaceData, setWorkspaceData] = useState<Workspace[]>([
+    defaultWorkspace,
+  ]);
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-top">
@@ -68,7 +83,84 @@ function Dashboard() {
         </div>
 
         <div className="dashboard-workspaces">
+          <div className="workspace-header">
+            <h2>Workspaces</h2>
+            <div className="workspace-view-toggle">
+              <button className="view-btn active">
+                {" "}
+                <LayoutGrid size={13}></LayoutGrid>
+                <span> Grid</span>
+              </button>
+              <button className="view-btn">
+                <List size={13}></List> <span>List</span>{" "}
+              </button>
+            </div>
+          </div>
 
+          <div className="workspace-tabs">
+            <span className="tab">Contracts</span>
+            <span className="tab active">Litigation</span>
+          </div>
+
+          <div className="workspace-controls">
+            <input
+              type="text"
+              placeholder="Search by Workspace Name / Client Name"
+              className="search-input"
+            />
+            <select className="select-filter">
+              <option>All Types</option>
+            </select>
+            <select className="select-filter">
+              <option>All Status</option>
+            </select>
+            <button className="create-btn">+ Create New Workspace</button>
+          </div>
+
+          <div className="workspace-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Workspace Name</th>
+                  <th>Client</th>
+                  <th>Opponent</th>
+                  <th>Case</th>
+                  <th>Area of Law</th>
+                  <th>Timeline</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {workspaceData.map((ws) => (
+                  <tr key={ws.id}>
+                    <td>{ws.name}</td>
+                    <td>{ws.clientName}</td>
+                    <td>{ws.opponentName}</td>
+                    <td>
+                      <span className="badge-blue">{ws.caseType}</span>
+                    </td>
+                    <td>{ws.areaOfLaw}</td>
+                    <td>
+                      <span className="badge-grey">{ws.timeline}</span>
+                    </td>
+                    <td>
+                      <span className="dots">{ws.actions || "⋯"}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {/* <div className="workspace-cards-grid">
+              {workspaceData.map((ws) => (
+                <WorkspaceCard key={ws.id} workspace={ws} />
+              ))}
+            </div> */}
+
+            <div className="upgrade-banner">
+              <span className="icon">📥</span>
+              <span>Upgrade to add more litigation cases to the workspace</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
