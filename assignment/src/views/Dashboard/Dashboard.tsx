@@ -9,6 +9,7 @@ import {
   Grid,
   LayoutGrid,
   List,
+  File,
 } from "lucide-react";
 import Card from "../../components/Card/Card";
 import "./styles.css";
@@ -54,6 +55,8 @@ function Dashboard() {
     },
   ];
 
+  const [isLayoutGrid, setIsLayoutGrid] = useState(false);
+
   const [workspaceData, setWorkspaceData] = useState<Workspace[]>([
     defaultWorkspace,
   ]);
@@ -86,12 +89,18 @@ function Dashboard() {
           <div className="workspace-header">
             <h2>Workspaces</h2>
             <div className="workspace-view-toggle">
-              <button className="view-btn active">
+              <button
+                className={`view-btn ${!isLayoutGrid ? "active" : ""}`}
+                onClick={() => setIsLayoutGrid(true)}
+              >
                 {" "}
                 <LayoutGrid size={13}></LayoutGrid>
                 <span> Grid</span>
               </button>
-              <button className="view-btn">
+              <button
+                className={`view-btn ${isLayoutGrid ? "active" : ""}`}
+                onClick={() => setIsLayoutGrid(false)}
+              >
                 <List size={13}></List> <span>List</span>{" "}
               </button>
             </div>
@@ -117,50 +126,61 @@ function Dashboard() {
             <button className="create-btn">+ Create New Workspace</button>
           </div>
 
-          <div className="workspace-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Workspace Name</th>
-                  <th>Client</th>
-                  <th>Opponent</th>
-                  <th>Case</th>
-                  <th>Area of Law</th>
-                  <th>Timeline</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {workspaceData.map((ws) => (
-                  <tr key={ws.id}>
-                    <td>{ws.name}</td>
-                    <td>{ws.clientName}</td>
-                    <td>{ws.opponentName}</td>
-                    <td>
-                      <span className="badge-blue">{ws.caseType}</span>
-                    </td>
-                    <td>{ws.areaOfLaw}</td>
-                    <td>
-                      <span className="badge-grey">{ws.timeline}</span>
-                    </td>
-                    <td>
-                      <span className="dots">{ws.actions || "⋯"}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            {/* <div className="workspace-cards-grid">
+          {isLayoutGrid ? (
+            <div className="workspace-cards-grid">
               {workspaceData.map((ws) => (
                 <WorkspaceCard key={ws.id} workspace={ws} />
               ))}
-            </div> */}
-
-            <div className="upgrade-banner">
-              <span className="icon">📥</span>
-              <span>Upgrade to add more litigation cases to the workspace</span>
+              <div className="workspace-card upgrade-card">
+                <File size={50} className="upgrade-icon" />
+                <span className="upgrade-text">
+                  Upgrade to add more litigation cases to the workspace
+                </span>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="workspace-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Workspace Name</th>
+                    <th>Client</th>
+                    <th>Opponent</th>
+                    <th>Case</th>
+                    <th>Area of Law</th>
+                    <th>Timeline</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {workspaceData.map((ws) => (
+                    <tr key={ws.id}>
+                      <td>{ws.name}</td>
+                      <td>{ws.clientName}</td>
+                      <td>{ws.opponentName}</td>
+                      <td>
+                        <span className="badge-blue">{ws.caseType}</span>
+                      </td>
+                      <td>{ws.areaOfLaw}</td>
+                      <td>
+                        <span className="badge-grey">{ws.timeline}</span>
+                      </td>
+                      <td>
+                        <span className="dots">{ws.actions || "⋯"}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <div className="upgrade-banner">
+                <span className="icon">📥</span>
+                <span>
+                  Upgrade to add more litigation cases to the workspace
+                </span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

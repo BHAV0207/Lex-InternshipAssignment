@@ -1,38 +1,121 @@
 .workspace-card {
-  border: 1px solid #ddd;
+  background: white;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  max-width: 350px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.workspace-case-type {
+  background-color: #e0f2ff;
+  color: #0077cc;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .workspace-title {
-  font-size: 1.25rem;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin: 0 0 4px;
 }
 
-.badge-blue {
-  background-color: #e0f2ff;
-  color: #0077cc;
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-}
-
-.badge-grey {
-  background-color: #f0f0f0;
+.workspace-subtitle {
   color: #555;
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 14px;
+  margin-bottom: 16px;
 }
 
-.card-actions {
-  text-align: right;
-  font-size: 1.5rem;
-  margin-top: 8px;
-  color: #888;
+.workspace-info {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.workspace-info .icon {
+  margin-right: 6px;
+}
+
+.workspace-status-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.status-badge {
+  background-color: #edf2f7;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.status-badge.grey {
+  background-color: #e2e8f0;
+}
+
+.status-badge.light-grey {
+  background-color: #f7fafc;
+}
+
+.workspace-avatars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  background-color: #1a202c;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.avatar.extra {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 12px 0;
+}
+
+.workspace-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.open-btn {
+  background-color: white;
+  border: 1px solid #cbd5e0;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.open-btn:hover {
+  background-color: #f1f5f9;
+}
+
+.dots {
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
 }
